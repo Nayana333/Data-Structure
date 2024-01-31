@@ -87,6 +87,39 @@ postOrderTraversal(node){
 return undefined
 
 }
+isValid(root,min,max){
+    if(!root){
+        return false
+    }else{
+        root.value>min&&
+        root.value<max
+        return(this.isValid(root.left,min,root.value)&&
+        this.isValid(root.right,max,root.value))
+    }
+    
+}
+closest(target){
+    let current=this.root
+    let closestValue=Infinity
+  while(current)
+
+  {
+    if(Math.abs(current.value-target)<Math.abs(closestValue-target)){
+        closestValue=current.value
+    }
+    if(target<current.value){
+        current=current.left
+    }
+    else if(target>current.value){
+        current=current.right
+    }
+    else{
+    break;
+    }
+   
+  }
+  return closestValue
+}
 }
 
 let binary=new binarySearchTree()
@@ -98,3 +131,6 @@ let searched=binary.search(binary.root,40)
 console.log('search',searched);
 console.log(binary.postOrderTraversal(binary.root));
 console.log(binary.preOrderTraversal(binary.root));
+
+
+
