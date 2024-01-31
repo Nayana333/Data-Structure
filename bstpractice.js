@@ -18,8 +18,8 @@ class binarySearchTree{
     }
     insert(value){
         const newNode=new Node(value)
-        if(this.isEmpty){
-            this.root=newNode(value)
+        if(this.isEmpty()){
+            this.root=newNode
             this.size++;
             return this
         }
@@ -63,22 +63,38 @@ class binarySearchTree{
     }
 
     preOrderTraversal(node){
-    if(node)
+    if(node){
     console.log(node.value);
     this.preOrderTraversal(node.left)
     this.preOrderTraversal(node.right)
     }
+    return undefined
+}
     inOrderTraversal(node){
     if(node){
     this.inOrderTraversal(node.left)
-    console.log(node);
+    console.log(node.value);
     this.inOrderTraversal(node.right)
     }
+    return undefined
 }
 postOrderTraversal(node){
+    if(node){
     this.postOrderTraversal(node.left)
     this.postOrderTraversal(node.right)
     console.log(node.value);
 }
+return undefined
 
 }
+}
+
+let binary=new binarySearchTree()
+binary.insert(60)
+binary.insert(40)
+binary.insert(20)
+binary.insert(10)
+let searched=binary.search(binary.root,40)
+console.log('search',searched);
+console.log(binary.postOrderTraversal(binary.root));
+console.log(binary.preOrderTraversal(binary.root));
