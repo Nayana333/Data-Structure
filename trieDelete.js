@@ -1,7 +1,7 @@
 class Node{
     constructor(){
-        this.root={}
-        this.children=false
+      this.children={}
+      this.isWordEnd=false
     }
 }
 class Trie{
@@ -11,7 +11,7 @@ class Trie{
     insert(word){
         let curr=this.root
         for(let i=0;i<word.length;i++){
-            charToInsert=word[i]
+          let  charToInsert=word[i]
             if(!curr.children.hasOwnProperty(charToInsert)){
                 curr.children[charToInsert]=new Node()
             }
@@ -26,10 +26,21 @@ class Trie{
             if(!curr.children.hasOwnProperty(charToFind)){
                 return false
             }
+            curr=curr.children[ charToFind]
+        }
+        return curr.isWordEnd=true
+
+    }
+    startWithPrefix(prefix){
+        let curr=this.root
+        for(let i=0;i<prefix.length;i++){
+            let charToFind=prefix[i]
+            if(!curr.children.hasOwnProperty(charToFind)){
+                return false
+            }
             curr=curr.children[charToFind]
         }
-        curr.isWordEnd=true
-
+        return true
     }
     delete(word){
         if(!this.contains(word)){
@@ -40,7 +51,7 @@ class Trie{
     }
     deleteHelper(node,word,index){
         if(index===word.length){
-            this.isWordEnd=false
+            node.isWordEnd=false
             return
         }
         let charToDelete=word[index]
@@ -53,3 +64,10 @@ class Trie{
     }
 }
 
+let trie =new Trie()
+trie.insert('nayana')
+trie.insert('nay')
+trie.insert('naya')
+console.log(trie.contains('naya'));
+console.log(trie.contains('nayanas'));
+console.log(trie.startWithPrefix('na'));
