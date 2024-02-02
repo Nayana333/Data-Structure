@@ -26,7 +26,7 @@ class Trie{
         for(let i=0;i<word.length;i++){
             let charToFind=word[i]
             if(curr.children.hasOwnProperty(charToFind)){
-                curr.children[charToFind]=new Node()
+               return false
             }
             curr=curr.children[charToFind]
     }
@@ -35,3 +35,5 @@ class Trie{
 }
 
 }
+
+

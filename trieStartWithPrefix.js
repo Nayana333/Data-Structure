@@ -29,7 +29,7 @@ class Trie{
             }
             curr=curr.children[charToFind]
         }
-        curr.isWordEnd=true
+       return curr.isWordEnd=true
     }
     startWithPrefix(prefix){
         let curr=this.root
@@ -43,6 +43,7 @@ class Trie{
         }
         return true
     }
+   
 
     
 }

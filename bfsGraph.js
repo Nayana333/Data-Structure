@@ -59,6 +59,7 @@ class Graph{
             }
         }
     }
+   
     display(){
         for(let vertex in this.adjacentList){
             console.log(vertex+"->"+[...this.adjacentList[vertex]]);
