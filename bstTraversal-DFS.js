@@ -80,6 +80,7 @@ bst.insert(45)
 bst.insert(17)
 console.log('is empty?:',bst.isEmpty(0));
 console.log('size:',bst.getSize());
+
 // console.log(bst.postOrderTraversal(bst.root));
-// console.log(bst.preOrderTraversal(bst.root));
-console.log(bst.inOrderTraversal(bst.root));
+ console.log(bst.preOrderTraversal(bst.root));
+// console.log(bst.inOrderTraversal(bst.root));

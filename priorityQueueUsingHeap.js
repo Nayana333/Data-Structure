@@ -10,7 +10,7 @@ class priorityQueue{
         return Math.floor((index-1)/2)
     }
     bubbleup(index){
-        while(index>0&&this.heap[index.priority]<this.heap[this.getparentIndex(index)].priority){
+        while(index>0&&this.heap[index].priority<this.heap[this.getparentIndex(index)].priority){
             this.swap[index,this.getparentIndex(index)]
             index=this.getparentIndex(index)
         }
@@ -30,10 +30,10 @@ class priorityQueue{
         let leftchild=this.getLeftChild(index)
         let rightchild=this.getRightchild(index)
         let minIndex=index
-        if(minIndex<this.heap.length&&this.heap[leftchild].priority<this.heap[minIndex].priority){
+        if(leftchild<this.heap.length&&this.heap[leftchild].priority<this.heap[minIndex].priority){
             minIndex=leftchild
         }
-        if(minIndex<this.heap.length&&this.heap[rightchild].priority<this.heap[minIndex].priority){
+        if(rightchild<this.heap.length&&this.heap[rightchild].priority<this.heap[minIndex].priority){
             minIndex=rightchild
         }
         if(index!==minIndex){
@@ -58,12 +58,12 @@ class priorityQueue{
 }
 
 let priorityQ=new priorityQueue()
-priority.insert("Apple",1)
-priority.insert("dog",4)
-priority.insert("car",3)
-priority.insert('banana',2)
-console.log(priority.isEmpty());
-while (!priority.isEmpty()){
-let element=priority.extract()
+priorityQ.insert("Apple",1)
+priorityQ.insert("dog",4)
+priorityQ.insert("car",3)
+priorityQ.insert('banana',2)
+console.log(priorityQ.isEmpty());
+while (!priorityQ.isEmpty()){
+let element=priorityQ.extract()
 console.log(element.value,"->",element.priority);
 }
