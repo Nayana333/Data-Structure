@@ -55,7 +55,7 @@ class Trie{
             return
         }
         let charToDelete=word[index]
-        let nextNode=this.children[charToDelete]
+        let nextNode=node.children[charToDelete]
         this.deleteHelper(nextNode,word,index+1)
       
         if(Object.keys(nextNode.children).length ===0 && !nextNode.isWordEnd){
@@ -71,3 +71,5 @@ trie.insert('naya')
 console.log(trie.contains('naya'));
 console.log(trie.contains('nayanas'));
 console.log(trie.startWithPrefix('na'));
+trie.delete("naya")
+console.log(trie.contains("naya"));

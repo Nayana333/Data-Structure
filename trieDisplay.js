@@ -56,7 +56,7 @@ class Trie{
             return
         }
         let charToDelete=word[index]
-        let nextNode=this.children[charToDelete]
+        let nextNode=node.children[charToDelete]
         this.delete_helper(nextNode,word,index+1)
         if(Object.keys(nextNode.children).length===0&&!nextNode.isWordEnd){
             delete Node(charToDelete)
@@ -86,4 +86,5 @@ console.log("conatin apple",trie.contains('apple'));
 console.log("contain babab",trie.contains('babab'));
 console.log("start with Prefix",trie.startWithPrefix('app'));
 trie.display()
+
 
