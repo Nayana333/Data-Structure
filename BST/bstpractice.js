@@ -120,6 +120,61 @@ closest(target){
   }
   return closestValue
 }
+
+minvalue(){
+    let node=this.root
+    if(!node){
+        return null
+    }
+    while(node.left){
+        node=node.left
+    }
+    return node.left
+}
+maxValue(){
+    let node=this.root
+    if(!node){
+        return null
+    }
+    while(node.right){
+        node=node.right
+    }
+    return node.right
+}
+
+
+remove(value) {
+    this.root = this._removeNode(this.root, value);
+  }
+
+  _removeNode(node, value) {
+    if (!node) {
+      return null;
+    }
+
+    if (value < node.value) {
+      node.left = this._removeNode(node.left, value);
+    } else if (value > node.key) {
+      node.right = this._removeNode(node.right, value);
+    } else {
+      if (!node.left) {
+        return node.right;
+      } else if (!node.right) {
+        return node.left;
+      }
+      node.value = this._findMin(node.right).value;
+      node.right = this._removeNode(node.right, node.value);
+    }
+
+    return node;
+  }
+
+  _findMin(node) {
+    while (node.left) {
+      node = node.left;
+    }
+    return node;
+}
 }
 
 let binary=new binarySearchTree()

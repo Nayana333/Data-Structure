@@ -89,4 +89,4 @@ Heap.buildHeap([3, 7, 2, 1, 9, 8]);
 
 console.log(Heap.heap); // [2, 3, 8, 7, 9]
 
- console.log(Heap.sortHeap());
+ console.log("sort",Heap.sortHeap());
